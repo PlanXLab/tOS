@@ -1,54 +1,51 @@
-# tOS-Lite 전용 Vim 사용자 매뉴얼
+# tOS-Lite Exclusive Vim User Manual
 
-본 매뉴얼은 임베디드 AI 모델 경량화 및 실시간 예지 추론 교육용으로 최적화된 tOS-Lite 환경의 Vim(vimrc.local) 사용 가이드입니다. 메모리 사용량을 최소화(180MB)하고 SD 카드 수명을 보호하기 위해 모든 임시 파일은 RAM 디스크(tmpfs)에서 처리되며, Python 개발에 특화된 기능들이 기본 탑재되어 있습니다.
+This manual is a guide for using Vim (vimrc.local) in the tOS-Lite environment, which is optimized for embedded AI model lightweighting and real-time predictive inference education. To minimize memory usage (180MB) and protect the SD card's lifespan, all temporary files are processed in a RAM disk (tmpfs), and features specialized for Python development are built-in by default.
 
-## 기본 UI 및 에디터 환경
-- 테마 및 색상: 가독성이 뛰어난 Gruvbox (Dark) 테마와 하단 Airline 상태 표시줄이 적용되어 있습니다.
-- 상대 줄 번호 (Relative Number): 현재 커서 위치를 기준으로 줄 번호가 표시됩니다. 10j (아래로 10줄 이동), 5k (위로 5줄 이동) 등 빠른 커서 이동에 매우 유용합니다.
-- 코드 인덴트 및 괄호
-  - 들여쓰기(Indent)는 4칸(Space)으로 자동 설정됩니다.
-  - 파이썬 블록을 쉽게 파악할 수 있도록 들여쓰기 세로선(|, ¦)이 표시됩니다.
-- 괄호 열기 입력 시 닫기 괄호가 자동 완성되며, 괄호 쌍마다 무지개 색상(vim-rainbow)이 적용되어 코드 분석이 쉽습니다.
-- 자동 정리 기능: 파일을 저장할 때마다 코드 끝부분의 불필요한 공백(Trailing whitespace)을 자동으로 제거하며, 파일을 다시 열면 이전에 작업하던 커서 위치로 자동 복귀합니다.
+## Basic UI and Editor Environment
+- Theme and Colors: Highly readable Gruvbox (Dark) theme and bottom Airline status bar are applied.
+- Relative Number: Line numbers are displayed relative to the current cursor position. Very useful for quick cursor movements such as 10j (move down 10 lines) or 5k (move up 5 lines).
+- Code Indent and Brackets
+  - Indent is automatically set to 4 spaces.
+  - Vertical indent lines (|, ¦) are displayed to easily identify Python blocks.
+  - When typing an opening bracket, the closing bracket is auto-completed, and rainbow colors (vim-rainbow) are applied to each bracket pair for easy code analysis.
+- Auto-clean function: Trailing whitespace at the end of the code is automatically removed every time the file is saved, and when the file is reopened, the cursor automatically returns to its previous working position.
 
-## 화면 분할 및 터미널 이동
+## Window Splitting and Terminal Movement
+Shortcut keys are configured to conveniently split the screen and use the terminal within Vim without a terminal multiplexer (like tmux) in an SSH remote connection environment.
 
-SSH 원격 접속 환경에서 터미널 멀티플렉서(tmux 등) 없이도 Vim 내부에서 편리하게 화면을 분할하고 터미널을 사용할 수 있도록 단축키가 구성되어 있습니다.
-
-기능 | 단축키 (일반 모드) | 단축키 (터미널/입력 모드)
+Function | Shortcut (Normal Mode) | Shortcut (Terminal/Insert Mode)
 -----|------------------|---------------------------
-창 분할 (수평) | :split | -
-창 분할 (수직) | :vsplit | -
-창 이동 (왼쪽) | Ctrl + h,Alt + h
-창 이동 (아래) | Ctrl + j,Alt + j
-창 이동 (위) | Ctrl + k | Alt + k
-창 이동 (오른쪽) | Ctrl + l | Alt + l
-내장 터미널 열기 | :term | -
-터미널 모드 빠져나오기 | - | Esc
+Split Window (Horizontal) | `:split` | -
+Split Window (Vertical) | `:vsplit` | -
+Move Window (Left) | `Ctrl + h`, `Alt + h` | -
+Move Window (Down) | `Ctrl + j`, `Alt + j` | -
+Move Window (Up) | `Ctrl + k` | `Alt + k`
+Move Window (Right) | `Ctrl + l` | `Alt + l`
+Open Built-in Terminal | `:term` | -
+Exit Terminal Mode | - | `Esc`
 
-> 팁: :vsplit 후 :term을 입력하면, 에디터 옆에 터미널을 띄워두고 코딩과 시스템 모니터링을 동시에 할 수 있습니다. 터미널의 스크롤 백 버퍼는 100,000줄로 넉넉하게 설정되어 있습니다.
+> Tip: By entering `:term` after `:vsplit`, you can code and monitor the system simultaneously with the terminal placed next to the editor. The terminal's scrollback buffer is generously set to 100,000 lines.
 
-## Python 개발 및 디버깅 특화 기능
+## Features Specialized for Python Development and Debugging
+Shortcut keys are mapped to immediately execute and debug Python code written on the Raspberry Pi. (The `<Leader>` key used in shortcut combinations is the comma (`,`).)
 
-라즈베리파이에서 작성한 파이썬 코드를 즉시 실행하고 디버깅할 수 있도록 단축키가 매핑되어 있습니다. (단축키 조합에 사용되는 <Leader> 키는 쉼표(,)입니다.)
-
-기능 | 단축키 | 설명
+Function | Shortcut | Description
 -----|-------|----------
-파이썬 코드 실행 | " |  누른 후 r",현재 편집 중인 Python 파일을 저장하고 즉시 실행합니다.
-디버그 중단점 토글 | F6 | 현재 줄에 Python 3 표준 디버거인 breakpoint() 코드를 삽입하거나 삭제합니다.
-코드 접기/펴기 | Space | 클래스나 함수 블록 단위로 코드를 접거나 펼칩니다. (SimpylFold 적용)
+Execute Python Code | `,` then `r` | Saves the Python file currently being edited and executes it immediately.
+Toggle Debug Breakpoint | `F6` | Inserts or deletes the Python 3 standard debugger `breakpoint()` code on the current line.
+Fold/Unfold Code | `Space` | Folds or unfolds the code in class or function block units. (SimpylFold applied)
 
-## 검색 및 다중 커서 (Multi-Cursor)
+## Search and Multi-Cursor
 
-기능 | 단축키 | 설명
+Function | Shortcut | Description
 -----|--------|---------
-단어 검색 | /검색어 | "대소문자를 구분하지 않고 검색하며, 대문자 입력 시에만 엄격히 구분합니다 (Smartcase)."
-검색 하이라이트 끄기 | Esc 연속 2번 | 검색 완료 후 화면에 남아있는 노란색 하이라이트를 즉시 지웁니다.
-다중 커서 선택 | Ctrl + n | "단어 위에 커서를 두고 누르면 해당 단어가 선택되며, 계속 누르면 다음 동일 단어에 커서가 추가로 생성되어 동시 편집이 가능합니다. (vim-visual-multi)"
+Search Word | `/search_term` | Searches case-insensitively, but strictly matches case only when uppercase letters are entered (Smartcase).
+Turn off Search Highlight | `Esc` twice | Immediately clears the yellow highlight remaining on the screen after the search is completed.
+Select Multi-Cursor | `Ctrl + n` | Pressing while the cursor is over a word selects the word, and continuously pressing creates additional cursors on the next identical words, allowing simultaneous editing. (vim-visual-multi)
 
-## SD 카드 보호 및 파일 휘발성 안내
+## SD Card Protection and File Volatility Guide
+tOS-Lite saves all Vim temporary files (`.swp`, backup files, undo logs, command history) in RAM (`tmpfs`, `/var/lib/tos/vim`) rather than a physical disk to increase the SD card lifespan of the educational board and prevent I/O bottlenecks.
 
-tOS-Lite는 교육용 보드의 SD 카드 수명을 늘리고 I/O 병목을 막기 위해 Vim의 모든 임시 파일(.swp, 백업 파일, 실행 취소 로그, 명령어 히스토리)을 물리 디스크가 아닌 RAM(tmpfs, /var/lib/tos/vim)에 저장합니다.
-
-- 영향: 라즈베리파이를 재부팅하면 이전에 검색했던 단어나 :wq 등의 Vim 내부 명령어 히스토리가 초기화됩니다.
-- 장점: 작업 중 보드 전원이 갑자기 차단되거나 에러가 발생해도, 사용자의 홈 폴더(Workspace)에 지저분한 임시 파일(.파일이름.swp)이 남아 충돌을 일으키지 않으므로 항상 깨끗한 실습 환경을 보장합니다. (단, 코드 저장 자체는 물리 디스크에 정상 반영됩니다.)
+- Impact: Rebooting the Raspberry Pi resets the history of previously searched words or Vim internal commands like `:wq`.
+- Advantage: Even if the board's power is suddenly cut off or an error occurs during work, messy temporary files (`.filename.swp`) do not remain in the user's home folder (Workspace) causing conflicts, ensuring a clean practice environment at all times. (However, the code saving itself is normally reflected on the physical disk.)
