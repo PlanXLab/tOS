@@ -8,4 +8,4 @@ The default shell is based on Zsh, configured with the Oh-My-Zsh plugin framewor
 
 Based on tOS-Lite, tOS-Lite AI comes pre-configured with components essential for vision AI inference—such as OpenCV, PyTorch (torch, torchvision), ONNX, ONNX Runtime, and Netron—and occupies approximately 1.8 GB of storage space.
 
-[tOS-Lite AI Last Image](https://github.com/PlanXLab/tOS/releases/latest/download/tOS-Lite-Ai.zip)
+[tOS-Lite AI Last Image](https://github.com/PlanXLab/tOS/releases/latest/download/tOS-Lite-Ai.img.xz)
