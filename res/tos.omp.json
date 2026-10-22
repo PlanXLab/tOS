@@ -1,5 +1,5 @@
 {
-  "$schema": "https://planxlab.com",
+  "$schema": "https://githubusercontent.com",
   "version": 3,
   "final_space": true,
   "blocks": [
@@ -12,7 +12,7 @@
         {
           "type": "os",
           "style": "diamond",
-          "leading_diamond": "<#6c6c6c,transparent>╭─</><#87afaf,transparent>\ue0ba</>",
+          "leading_diamond": "<#6c6c6c,transparent>╭─</><#87afaf,transparent>\ue0b6</>",
           "trailing_diamond": "\ue0bc",
           "background": "#87afaf",
           "foreground": "#080808",
@@ -116,7 +116,7 @@
           "leading_diamond": "\ue0ba",
           "background": "#87af87",
           "foreground": "#080808",
-          "template": " \uf2db {{ round .PhysicalPercentUsed .Precision }}% "
+          "template": " \uf2db {{ round .PhysicalPercentUsed 0 }}% "
         },
         {
           "type": "sysinfo",
@@ -130,7 +130,7 @@
           "type": "time",
           "style": "diamond",
           "leading_diamond": "\ue0ba",
-          "trailing_diamond": "<#87afaf,transparent>\ue0bc</><#6c6c6c,transparent>─╮</>",
+          "trailing_diamond": "<#87afaf,transparent>\ue0b4</><#6c6c6c,transparent>─╮</>",
           "background": "#87afaf",
           "foreground": "#080808",
           "properties": {
