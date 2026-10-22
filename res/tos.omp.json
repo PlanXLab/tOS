@@ -1,5 +1,5 @@
 {
-  "$schema": "https://githubusercontent.com",
+  "$schema": "https://planxlab.com",
   "version": 3,
   "final_space": true,
   "blocks": [
@@ -30,7 +30,7 @@
           "foreground_templates": [
             "{{ if .Root }}#dadada{{ end }}"
           ],
-          "template": "    {{ .UserName }}@{{ .HostName }} "
+          "template": " \uf233 {{ .UserName }}@{{ .HostName }} "
         },
         {
           "type": "path",
@@ -42,7 +42,7 @@
             "style": "fish",
             "dir_length": 1
           },
-          "template": "    {{ .Path }} "
+          "template": " \uf07c {{ .Path }} "
         },
         {
           "type": "git",
@@ -59,9 +59,9 @@
             "fetch_stash_count": true,
             "branch_max_length": 32,
             "truncate_symbol": "…",
-            "branch_icon": "   "
+            "branch_icon": "\uf418 "
           },
-          "template": " {{ .HEAD }}{{ if gt .Behind 0 }}    {{ .Behind }}{{ end }}{{ if gt .Ahead 0 }}    {{ .Ahead }}{{ end }}{{ if gt .StashCount 0 }}    {{ .StashCount }}{{ end }}{{ if gt .Staging.Unmerged 0 }} <#dadada>   {{ .Staging.Unmerged }}</>{{ end }}{{ if gt .Staging.Changed 0 }}    {{ .Staging.Total }}{{ end }}{{ if gt .Working.Modified 0 }}    {{ .Working.Modified }}{{ end }}{{ if gt .Working.Untracked 0 }}    {{ .Working.Untracked }}{{ end }} "
+          "template": " {{ .HEAD }}{{ if gt .Behind 0 }} \uf063 {{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} \uf062 {{ .Ahead }}{{ end }}{{ if gt .StashCount 0 }} \uf01c {{ .StashCount }}{{ end }}{{ if gt .Staging.Unmerged 0 }} <#dadada>\uf071 {{ .Staging.Unmerged }}</>{{ end }}{{ if gt .Staging.Changed 0 }} \uf046 {{ .Staging.Total }}{{ end }}{{ if gt .Working.Modified 0 }} \uf044 {{ .Working.Modified }}{{ end }}{{ if gt .Working.Untracked 0 }} \uf059 {{ .Working.Untracked }}{{ end }} "
         }
       ]
     },
@@ -84,7 +84,7 @@
           "properties": {
             "always_enabled": true
           },
-          "template": " {{ if gt .Code 0 }}✘ {{ .Code }}{{ else }}  {{ end }} "
+          "template": " {{ if gt .Code 0 }}\uf00d {{ .Code }}{{ else }}\uf00c{{ end }} "
         },
         {
           "type": "executiontime",
@@ -96,7 +96,7 @@
             "style": "austin",
             "threshold": 500
           },
-          "template": "    {{ .FormattedMs }} "
+          "template": " \uf252 {{ .FormattedMs }} "
         },
         {
           "type": "command",
@@ -108,7 +108,7 @@
             "shell": "sh",
             "command": "awk '{printf \"%.0f°C\", $1/1000}' /sys/class/thermal/thermal_zone0/temp 2>/dev/null"
           },
-          "template": "{{ if .Output }}  {{ .Output }} {{ end }}"
+          "template": "{{ if .Output }} \uf2c9 {{ .Output }} {{ end }}"
         },
         {
           "type": "sysinfo",
@@ -116,7 +116,7 @@
           "leading_diamond": "\ue0ba",
           "background": "#87af87",
           "foreground": "#080808",
-          "template": "    {{ round .PhysicalPercentUsed .Precision }}% "
+          "template": " \uf2db {{ round .PhysicalPercentUsed .Precision }}% "
         },
         {
           "type": "sysinfo",
@@ -124,7 +124,7 @@
           "leading_diamond": "\ue0ba",
           "background": "#5f87af",
           "foreground": "#dadada",
-          "template": "    {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) | round 1 }}G "
+          "template": " \uf0c9 {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) | round 1 }}G "
         },
         {
           "type": "time",
@@ -136,7 +136,7 @@
           "properties": {
             "time_format": "15:04:05"
           },
-          "template": "    {{ .CurrentDate | date .Format }} "
+          "template": " \uf017 {{ .CurrentDate | date .Format }} "
         }
       ]
     },
