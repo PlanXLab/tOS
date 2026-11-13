@@ -246,7 +246,7 @@
           "foreground_templates": [
             "{{ if gt .Code 0 }}p:error{{ end }}"
           ],
-          "template": "❯"
+          "template": "󰶻"
         }
       ]
     },
